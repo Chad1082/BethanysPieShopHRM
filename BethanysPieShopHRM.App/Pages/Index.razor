@@ -3,3 +3,8 @@
 <h1 class="page-title">Welcome to Bethany's Pie Shop HRM!</h1>
 <br />
 <h3>Here you can manage our wonderful staff!</h3>
+
+@foreach (var widgetType in Widgets)
+{
+    <DynamicComponent Type="widgetType"></DynamicComponent>
+}
