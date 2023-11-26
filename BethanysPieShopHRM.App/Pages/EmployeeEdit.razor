@@ -7,6 +7,8 @@
 <section class="employee-edit">
     <h1 class="page-title">Details for @Employee.FirstName @Employee.LastName</h1>
     <EditForm Model="@Employee" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
         @if (Employee.EmployeeId == 0)
         {
                 <div class="row mb-3">
@@ -22,6 +24,7 @@
             <div class="col-md-8">
                 <InputText id="lastName" @bind-Value="@Employee.LastName" class="form-control col-md-8" placeholder="Enter last name"></InputText>
             </div>
+            <ValidationMessage class="offset-md-3 col-md-8" For="@(() => Employee.LastName)"></ValidationMessage>
 
         </div>
 
@@ -30,6 +33,7 @@
             <div class="col-md-8">
                 <InputText id="firstName" class="form-control col-md-8" @bind-Value="@Employee.FirstName" placeholder="Enter first name"></InputText>
             </div>
+                <ValidationMessage class="offset-md-3 col-md-8" For="@(() => Employee.FirstName)"></ValidationMessage>
 
         </div>
 
@@ -45,7 +49,7 @@
             <div class="col-md-8">
                 <InputText id="email" class="form-control col-md-8" @bind-Value="@Employee.Email" placeholder="Enter email"></InputText>
             </div>
-
+                <ValidationMessage class="offset-md-3 col-md-8" For="@(() => Employee.Email)"></ValidationMessage>
         </div>
 
         <div class="row mb-3">
@@ -169,7 +173,7 @@
             <div class="col-md-8">
                 <InputTextArea id="comment" class="form-control" @bind-Value="@Employee.Comment" placeholder="Enter comment"></InputTextArea>
             </div>
-
+                <ValidationMessage class="offset-md-3 col-md-8" For="@(() => Employee.Comment)"></ValidationMessage>
         </div>
         <button type="submit" class="btn btn-primary me-1">Save Employee</button>
         @if (Employee.EmployeeId > 0)
